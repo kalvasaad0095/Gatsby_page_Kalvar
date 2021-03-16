@@ -1,47 +1,35 @@
 {
-  "name": "gatsby-starter-default",
-  "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
-  "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
-  "dependencies": {
-    "gatsby": "^3.0.1",
-    "gatsby-image": "^3.0.0",
-    "gatsby-plugin-gatsby-cloud": "^2.0.0",
-    "gatsby-plugin-image": "^1.0.0",
-    "gatsby-plugin-manifest": "^3.0.0",
-    "gatsby-plugin-offline": "^4.0.0",
-    "gatsby-plugin-react-helmet": "^4.0.0",
-    "gatsby-plugin-sharp": "^3.0.0",
-    "gatsby-source-filesystem": "^3.0.0",
-    "gatsby-transformer-sharp": "^3.0.0",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-helmet": "^6.1.0",
-    "react-icons": "^4.2.0"
-  },
-  "devDependencies": {
-    "prettier": "2.2.1"
-  },
+  "name": "@nodelib/fs.walk",
+  "version": "1.2.6",
+  "description": "A library for efficiently walking a directory recursively",
+  "license": "MIT",
+  "repository": "https://github.com/nodelib/nodelib/tree/master/packages/fs/fs.walk",
   "keywords": [
-    "gatsby"
+    "NodeLib",
+    "fs",
+    "FileSystem",
+    "file system",
+    "walk",
+    "scanner",
+    "crawler"
   ],
-  "license": "0BSD",
+  "engines": {
+    "node": ">= 8"
+  },
+  "main": "out/index.js",
+  "typings": "out/index.d.ts",
   "scripts": {
-    "build": "gatsby build",
-    "develop": "gatsby develop",
-    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
-    "start": "npm run develop",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+    "clean": "rimraf {tsconfig.tsbuildinfo,out}",
+    "lint": "eslint \"src/**/*.ts\" --cache",
+    "compile": "tsc -b .",
+    "compile:watch": "tsc -p . --watch --sourceMap",
+    "test": "mocha \"out/**/*.spec.js\" -s 0",
+    "build": "npm run clean && npm run compile && npm run lint && npm test",
+    "watch": "npm run clean && npm run compile:watch"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+  "dependencies": {
+    "@nodelib/fs.scandir": "2.1.4",
+    "fastq": "^1.6.0"
   },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
-  }
+  "gitHead": "bd149ea6dc1ef18c234730278271f6a7f3882ed2"
 }
